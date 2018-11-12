@@ -1,7 +1,7 @@
 # 2018 DML308多核组新生学习
 >该初版目录参考自[华科冰岩作坊](https://github.com/lxx2013/summer-camp-2018/blob/master/README.md)
 
-欢迎你来到多核组 2018 暑期夏令营！
+欢迎你来到多核组 2018 Git冬令营！
 
 在开始之前，你需要知道的是：
 
@@ -179,10 +179,11 @@
 1. 了解什么是
     - `git merge` 
     - `Pull Request`
+    - `Issue` 有问题就开 Issue,我们可以把讨论的过程记录下来,也便于其它人遇到同样的问题时有文档可查
     
 2. 同时产生学习笔记写入 `你的文件夹/Notes/git.md` 中
 
-3. 在`student-camp-2018`中提交`Pull Request`
+3. 在`student-camp-2018`中提交`Pull Request`
 
 4. 在`cn.costream.site`和`costream.site`中提交`Pull Request`来修改自己的个人名片
 
