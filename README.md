@@ -16,7 +16,7 @@
     - Notes（空）
     - Tasks（空）
     - Process.md（进度表）
-  - Ya（李妍）
+  - Yan（李妍）
   - Yaerlan（李雅兰）
   - Zhang (张培基)
   - README.md
