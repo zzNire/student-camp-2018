@@ -53,7 +53,7 @@
 |      学生大礼包         | https://github.com/ivmm/Student-resources |
 | Github Education Pack |     https://education.github.com/pack     |
 | 任意输入法 | 要求项目内全部使用`utf-8`编码<br>标点符号使用英文标点(半角) |
-| `wox` / `bitwise` / `cmder`| [实验室软件推荐列表/未来由你们更新](https://cn.costream.site/guide/link_software.html) |
+| `wox` / `bitwise` / `cmder`| [实验室软件推荐列表/未来由你们更新](https://cn.costream.site/guide/link_software.html) |
 
 ## 接下来让我们开始紧张刺激的 `7` 层关卡挑战吧 ~~ Link Start ！！
 
@@ -70,7 +70,7 @@
 1. 创建并拥有一个 github 账号
 2. 了解并掌握 git 基本操作
 3. Fork 并 Clone `student-camp-2018` 仓库
-4. 要求把过程中学到的新知识写入`你的文件夹/Notes`,包括后续任务进程中也是如此
+4. 要求把过程中学到的新知识写入`你的文件夹/Notes`,包括后续任务进程中也是如此
 
 #### 任务位置
 
@@ -126,7 +126,7 @@
 1. 成功翻越 GFW
 2. 能够正常访问 Google、Stackoverflow等国外网站
 3. （选做）成功申请并使用上 gmail(申请后可以配置 Chrome 账户登录后同步书签和插件)
-4. ~~在心中~~修改常用搜索引擎为 Google (很多人包括我一开始还是对百度怀有留恋,但随着使用次数的提升你会越来越喜欢Google, 尤其是陷入CSDN的转载黑洞时)
+4. ~~在心中~~修改常用搜索引擎为 Google (很多人包括我一开始还是对百度怀有留恋,但随着使用次数的提升你会越来越喜欢Google, 尤其是陷入CSDN的转载黑洞时)
 
 关键词：Google、Shadowsocks、Virtual Private Network
 
@@ -178,11 +178,11 @@
 
 1. 了解什么是
     - `git merge` 
-    - `Pull Request`
+    - `Pull Request`
     
 2. 同时产生学习笔记写入 `你的文件夹/Notes/git.md` 中
 
-3. 在`student-camp-2018`中提交`Pull Request`
+3. 在`student-camp-2018`中提交`Pull Request`
 
 4. 在`cn.costream.site`和`costream.site`中提交`Pull Request`来修改自己的个人名片
 
@@ -202,23 +202,23 @@
 
 1. 了解 COStream 语法
     
-2. 负责[DML308/COStream](https://github.com/DML308/COStream)项目主目录的`tests`测试文件维护
+2. 负责[DML308/COStream](https://github.com/DML308/COStream)项目主目录的`tests`测试文件维护
     - 计划是逐步将原有无文档测试文件全部替换为新测试文件
-    - 原则上不追求复杂的算法,也不追求产出速度
-        - 但要求对每个一眼看不出结果的函数标记详尽的注释
+    - 原则上不追求复杂的算法,也不追求产出速度
+        - 但要求对每个一眼看不出结果的函数标记详尽的注释
         - 最差最差也要留下你参考的博客链接
         - 并对函数运行结果的正确性进行校验,给出测试时用的数据和预期结果(和网上标准结果进行比对时要附上链接)
     - 文法覆盖面尽量大
-        - 首先尽量覆盖网站文档中已有的文法结构
-        - 能找出越多的 BUG 越好. *后期考虑专门开一个页面,纪录找到的BUG列表和修复BUG的工作, 签名制*
+        - 首先尽量覆盖网站文档中已有的文法结构
+        - 能找出越多的 BUG 越好. *后期考虑专门开一个页面,纪录找到的BUG列表和修复BUG的工作, 签名制*
 >注: 测试对于软件开发是一项很重要的工作, 目前市面上测试开发的岗位也能开到20k/月,而且很缺专业人才. "单元测试" 这四个字在任何开源软件中都能频繁的见到, 甚至不少项目都有着"测试驱动开发"这样的编程思想
-#### 考核指标: 在`DML308/COStream/tests`目录中拥有属于自己的文件
+#### 考核指标: 在`DML308/COStream/tests`目录中拥有属于自己的文件
 
-关键词：`tests` `单元测试`
+关键词: `tests` `单元测试`
 
 #### 任务位置
 
-`https://github.com/DML308/COStream/tests`
+`https://github.com/DML308/COStream/tests`
 
 #### 任务奖励
 
@@ -231,7 +231,7 @@
 
 1. 了解 lex 词法分析 & 正则表达式
     
-2. 了解 语法分析 & 移入-规约 规则
+2. 了解语法分析 & 移入-规约 规则
 
 #### 考核指标: 使用 flex 和 bison 完成一个自己的计算器
 - 功能涵盖:
