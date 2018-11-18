@@ -3,12 +3,12 @@
 
 ## 📖 总进度表
 
-| 学　员 |  1|2|3|4|5|6|7  | 当前 deadline <br>`11/18 24:00`-`完成任务1` |
+| 学　员 |  1|2|3|4|5|6|7  | 当前 deadline <br>`11/22 24:00`-`完成任务2,3` |
 |:----: |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| 黄业兴 |   | | | | | |   |  |
-| 李　妍 |   | | | | | |   |  |
-| 李雅兰 | √ | | | | | |   |√ |
-| 张培基 | √ | |√| | | |   |√ |
+| 黄业兴 | √ | |√| | | |   |  |
+| 李　妍 | √ | |√| | | |   |  |
+| 李雅兰 | √ | |√| | | |   |  |
+| 张培基 | √ | |√| | | |   |  |
 
 欢迎你来到多核组 2018 Git冬令营！
 
@@ -111,13 +111,20 @@
 
 ## 2. Markdown
 
-推荐时长：`1` 天
+推荐时长：`1~3` 天
 
 #### 任务目标
 
 1. 阅读并了解 markdown 语法规范
 2. 熟练使用基本的 markdown 操作
 3. (可选)开通自己的Markdown博客 ~~未来求职简历可附上技术博客~~ ,推荐 [简书](https://jianshu.com) 或者 **Github Pages + Hexo**
+
+#### 考核指标
+- 创建`你的文件夹/Notes/markdown.md`文件,在其中写入以下内容
+    - markdown 常用字符:<br>列出文本中最常用的`mardown`风格标签, 至少5个
+    - 修改任务1中你的`git.md`或`git.md.txt`文件, 运用刚学到的 markdown 规则来美化排版
+    - 在上一步自己`fork`的文件夹内把内容修改完毕后提交 Pull Request 到主目录.
+    - 简单了解什么是 Issue , 然后在[Issue7](https://github.com/DML308/student-camp-2018/issues/7)中列出自己接下来的任务&deadline
 
 关键词：markdown、typora、简书、插件
 
@@ -141,9 +148,12 @@
 #### 任务目标
 
 1. 成功翻越 GFW
-2. 能够正常访问 Google、Stackoverflow等国外网站
+2. 能够正常访问 Google、Stackoverflow等国外网站 , 注: 因为华科校园网的关系,大家都能访问 google.com.hk 所以这个任务我都算你们完成. 但校园网不稳定,有时还经常断连, 所以最好有自己的访问外网的工具
 3. （选做）成功申请并使用上 gmail(申请后可以配置 Chrome 账户登录后同步书签和插件)
-4. ~~在心中~~修改常用搜索引擎为 Google (很多人包括我一开始还是对百度怀有留恋,但随着使用次数的提升你会越来越喜欢Google, 尤其是陷入CSDN的转载黑洞时)
+4. ~~在心中~~修改常用搜索引擎为 Google 
+
+#### 考核指标
+无
 
 关键词：Google、Shadowsocks、Virtual Private Network
 
@@ -155,9 +165,9 @@
 
 #### 参考资料
 
-[lantern](https://github.com/getlantern/download) *比较贵,不推荐*
-
-[shadowsocks](https://shadowsocks.com/) 可以几个人合买一个服务器来配置代理
+- [lantern](https://github.com/getlantern/download) *比较贵,不推荐*
+- [SetupVpn]()  **请张同学以 markdown 的格式把链接附在这里**
+- [shadowsocks](https://shadowsocks.com/) 可以几个人合买一个服务器来配置代理
 
 ## 4. 挑选一个适合自己的编辑器
 
