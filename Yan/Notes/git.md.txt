@@ -1,0 +1,15 @@
+﻿git 指令:
+//git merge master 
+//假设当前在test分支上面，把master分支上的修改同步到test分支上
+//git merge tool 
+//调用merge工具
+//git stash 
+//把未完成的修改缓存到栈容器中
+//git stash list 
+//查看所有的缓存
+//git stash pop 
+//恢复本地分支到缓存状态
+
+回答问题: 什么是 Pull Request? 
+    Pull Request是社会化编程的象征，通过这个功能，你可以参与到别人开发的项目中，并做出自己的贡献。Pull request是自己修改源代码后，请求对方仓库采纳的一种行为,大家在其中做一些Code Review的工作，把结果反馈到Pull Request中.
+    当你想更正别人仓库里的错误时，要走一个流程：先 fork 别人的仓库，相当于拷贝一份，相信我，不会有人直接让你改修原仓库的；clone 到本地分支，做一些 bug fix；发起 pull request 给原仓库，让他看到你修改的 bug；原仓库 review 这个 bug，如果是正确的话，就会 merge 到他自己的项目中。
