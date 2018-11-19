@@ -98,7 +98,7 @@ Please don't use any `<blink>` tags.
 
 & #8212; is the decimal-encoded equivalent of `&mdash;`.
 
-![Alt text](../player.png)
+![Alt text](./player.png)
 
 <http://example.com/>
 
