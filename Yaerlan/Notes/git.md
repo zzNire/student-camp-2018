@@ -1,4 +1,5 @@
-﻿常见git指令：
+ 常见git指令：
+
 git add <file>          添加文件到暂存区
 git commit -m "message" 把暂存区的内容提交到当前分支
 git status              查看有没有文件被修改
