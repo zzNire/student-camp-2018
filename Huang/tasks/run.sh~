@@ -1,0 +1,6 @@
+#!bin/sh
+bison -d parser.y
+lex lexer.l
+gcc lex.yy.c -o lexer.o
+gcc parser.tab.c -o parser.o
+gcc lexer.o parser.o -o a.out

@@ -1,0 +1,45 @@
+%{
+#include <stdio>
+#include <math.h>
+#define YYSTYPE double
+
+
+%}
+
+%token ADD SUB MAL DIV AND OR NOT OP CP NUMBER EOL
+
+ //先出现优先级越低
+%left ADD SUB
+%left MAL DIV
+%right AND OR NOT UNIMUS   // %prec UMIMUS 该操作的优先级与UMINUS相同 UMINUS最高 所以该操作优先级最高
+
+%% 
+lines : lines expr EOL  {printf(%g\n,$2);}
+    | lines EOL
+    |
+    ;
+
+expr : expr ADD expr    {$$ = $1 + $2;}
+    | expr SUB expr    {$$ = $1 - $2;}
+    | expr MAL expr    {$$ = $1 * $2;}
+    | expr DIV expr    {$$ = $1 / $2;}
+    | expr AND expr    {$$ = $1 & $2;}
+    | expr OR expr     {$$ = $1 | $2;}
+    | NOT expr         {$$ = ~ $2;}
+    | OP expr CP       {$$ = $2;}
+    | SUB expr  %prec UNIMUS       {$$ = - $2;} 
+    | NUMBER
+
+%%
+void yyerror(char* s)
+{
+    fprintf(stderr, "%s\n", s);
+}
+
+int main(void)
+{
+    printf("A simple calculator.\n");
+    yyparse();
+    return 0;
+}
+
