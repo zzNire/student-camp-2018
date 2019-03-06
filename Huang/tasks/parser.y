@@ -33,9 +33,9 @@ extern void yyerror(const char *msg);
 
 %% 
 
-lines : expr EOL  {$$ = $1;  $1->print();}
-    | lines expr EOL  {$$ = $2; $1->print();}
-    | lines EOL
+lines : expr EOL  {$$ = $1;  $1->print(); printf("expr EOL\n");}
+    | lines expr EOL  {$$ = $2; $2->print(); printf("lines expr EOL\n");}
+    | lines EOL {printf("lines EOL\n");}
     ;
 
 
@@ -47,9 +47,9 @@ expr : expr ADD expr   {$$ = new binopNode((constantNode*)$1,"+",(constantNode*)
     | expr DIV expr    {$$ = new binopNode((constantNode*)$1,"/",(constantNode*)$3); $$ = $$->toString();}
     | expr AND expr    {$$ = new binopNode((constantNode*)$1,"&&",(constantNode*)$3); $$ = $$->toString();}
     | expr OR expr     {$$ = new binopNode((constantNode*)$1,"||",(constantNode*)$3); $$ = $$->toString();}
-    | NOT expr         {$$ = NULL; }
+    | NOT expr         {$$ = $$ = new unaryNode("!",(constantNode*)$2); $$ = $$->toString();}
     | OP expr CP       {$$ = $2; }
-    | SUB expr  %prec UNIMUS       {$$ = NULL; } 
+    | SUB expr  %prec UNIMUS       {$$ = $$ = new unaryNode("-",(constantNode*)$2); $$ = $$->toString(); } 
     | NUMBER {$$ = $1; }
     ;
 

@@ -1244,90 +1244,96 @@ yyreduce:
     {
         case 2:
 #line 36 "parser.y" /* yacc.c:1646  */
-    {(yyval.node) = (yyvsp[-1].node);  (yyvsp[-1].node)->print();}
+    {(yyval.node) = (yyvsp[-1].node);  (yyvsp[-1].node)->print(); printf("expr EOL\n");}
 #line 1249 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 3:
 #line 37 "parser.y" /* yacc.c:1646  */
-    {(yyval.node) = (yyvsp[-1].node); (yyvsp[-2].node)->print();}
+    {(yyval.node) = (yyvsp[-1].node); (yyvsp[-1].node)->print(); printf("lines expr EOL\n");}
 #line 1255 "parser.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 4:
+#line 38 "parser.y" /* yacc.c:1646  */
+    {printf("lines EOL\n");}
+#line 1261 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 5:
 #line 44 "parser.y" /* yacc.c:1646  */
     {(yyval.node) = new binopNode((constantNode*)(yyvsp[-2].node),"+",(constantNode*)(yyvsp[0].node)); (yyval.node) = (yyval.node)->toString(); }
-#line 1261 "parser.tab.c" /* yacc.c:1646  */
+#line 1267 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
 #line 45 "parser.y" /* yacc.c:1646  */
     {(yyval.node) = new binopNode((constantNode*)(yyvsp[-2].node),"-",(constantNode*)(yyvsp[0].node)); (yyval.node) = (yyval.node)->toString();}
-#line 1267 "parser.tab.c" /* yacc.c:1646  */
+#line 1273 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
 #line 46 "parser.y" /* yacc.c:1646  */
     {(yyval.node) = new binopNode((constantNode*)(yyvsp[-2].node),"*",(constantNode*)(yyvsp[0].node)); (yyval.node) = (yyval.node)->toString();}
-#line 1273 "parser.tab.c" /* yacc.c:1646  */
+#line 1279 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
 #line 47 "parser.y" /* yacc.c:1646  */
     {(yyval.node) = new binopNode((constantNode*)(yyvsp[-2].node),"/",(constantNode*)(yyvsp[0].node)); (yyval.node) = (yyval.node)->toString();}
-#line 1279 "parser.tab.c" /* yacc.c:1646  */
+#line 1285 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 9:
 #line 48 "parser.y" /* yacc.c:1646  */
     {(yyval.node) = new binopNode((constantNode*)(yyvsp[-2].node),"&&",(constantNode*)(yyvsp[0].node)); (yyval.node) = (yyval.node)->toString();}
-#line 1285 "parser.tab.c" /* yacc.c:1646  */
+#line 1291 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
 #line 49 "parser.y" /* yacc.c:1646  */
     {(yyval.node) = new binopNode((constantNode*)(yyvsp[-2].node),"||",(constantNode*)(yyvsp[0].node)); (yyval.node) = (yyval.node)->toString();}
-#line 1291 "parser.tab.c" /* yacc.c:1646  */
+#line 1297 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
 #line 50 "parser.y" /* yacc.c:1646  */
-    {(yyval.node) = NULL; }
-#line 1297 "parser.tab.c" /* yacc.c:1646  */
+    {(yyval.node) = (yyval.node) = new unaryNode("!",(constantNode*)(yyvsp[0].node)); (yyval.node) = (yyval.node)->toString();}
+#line 1303 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
 #line 51 "parser.y" /* yacc.c:1646  */
     {(yyval.node) = (yyvsp[-1].node); }
-#line 1303 "parser.tab.c" /* yacc.c:1646  */
+#line 1309 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
 #line 52 "parser.y" /* yacc.c:1646  */
-    {(yyval.node) = NULL; }
-#line 1309 "parser.tab.c" /* yacc.c:1646  */
+    {(yyval.node) = (yyval.node) = new unaryNode("-",(constantNode*)(yyvsp[0].node)); (yyval.node) = (yyval.node)->toString(); }
+#line 1315 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
 #line 53 "parser.y" /* yacc.c:1646  */
     {(yyval.node) = (yyvsp[0].node); }
-#line 1315 "parser.tab.c" /* yacc.c:1646  */
+#line 1321 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
 #line 56 "parser.y" /* yacc.c:1646  */
     {(yyval.node) = new constantNode("INTEGER",(yyvsp[0].num));}
-#line 1321 "parser.tab.c" /* yacc.c:1646  */
+#line 1327 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
 #line 57 "parser.y" /* yacc.c:1646  */
     {(yyval.node) = new constantNode("FLOAT",(yyvsp[0].doubleNum));}
-#line 1327 "parser.tab.c" /* yacc.c:1646  */
+#line 1333 "parser.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1331 "parser.tab.c" /* yacc.c:1646  */
+#line 1337 "parser.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires

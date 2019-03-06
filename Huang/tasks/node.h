@@ -45,10 +45,10 @@ class constantNode : public Node{
         
         void print(){
             if(this->valueType.compare("INTEGER")==0){
-                printf("%ld",llval);
+                printf("%ld\n",llval);
             }
             else if(this->valueType.compare("FLOAT")==0){
-                printf("%lf",dval);
+                printf("%lf\n",dval);
             }
         }
 };
@@ -74,8 +74,8 @@ class binopNode : public Node
         //printf("binopNode");
         //printf("%s",left->valueType.data());
         
-        if(left->valueType.compare("INTEGER")==0){
-            //printf("%ld %s %ld ",left->llval ,op.data(), right->llval);
+        if(left->valueType.compare("INTEGER") == 0 && right->valueType.compare("INTEGER") == 0){
+            printf("%ld %s %ld\n",left->llval ,op.data(), right->llval);
             long result = 0 ;
             if(this->op.compare("+")==0){
                 result = left->llval + right->llval;
@@ -98,9 +98,9 @@ class binopNode : public Node
             return new constantNode("INTEGER",result);
         
         }
-        else if(left->valueType.compare("FLOAT")==0){
+        else if(left->valueType.compare("FLOAT") == 0 || right->valueType.compare("FLOAT") == 0){
             double result = 0 ;
-            printf("%ld %s %ld ",left->dval ,op.data(), right->dval);
+            printf("%lf %s %lf\n",left->dval ,op.data(), right->dval);
             if(this->op.compare("+")==0){
                 result = left->dval + right->dval;
             }
@@ -126,4 +126,48 @@ class binopNode : public Node
         }
     }
 };
+
+class unaryNode : public Node
+{
+  public:
+    constantNode *exp;
+    string op;
+    unaryNode(string op, constantNode *exp)
+    {
+       
+        this->exp = exp;
+        this->op = op;
+    }
+    ~unaryNode() {}
+    void print() {}
+    constantNode* toString(){
+        if(exp->valueType.compare("INTEGER")==0){
+            printf("%s %ld\n",op.data(), exp->llval);
+            long result = 0 ;
+            if(this->op.compare("!")==0){
+                result = ! exp->llval;
+            }
+            if(this->op.compare("-")==0){
+                result = - exp->llval;
+            }
+            return new constantNode("INTEGER",result);
+        }
+            
+        else if(exp->valueType.compare("FLOAT")==0){
+            double result = 0 ;
+            printf("%s %lf\n ",op.data(), exp->dval);
+             if(this->op.compare("!")==0){
+                result = ! exp->dval;
+            }
+            if(this->op.compare("-")==0){
+                result = - exp->dval;
+            }
+            return new constantNode("FLOAT",result);
+        }
+        else{
+            return 0;
+        }
+    }
+};
+
 #endif
