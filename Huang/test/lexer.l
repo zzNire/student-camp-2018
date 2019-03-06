@@ -3,7 +3,6 @@
 
 %{
     #include <iostream>
-    #include "node.h"
     #include "parser.tab.h"
     using namespace std;
 

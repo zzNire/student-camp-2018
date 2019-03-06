@@ -33,22 +33,22 @@ extern void yyerror(const char *msg);
 
 %% 
 
-lines : expr EOL  {$$ = $1;  $1->print();}
-    | lines expr EOL  {$$ = $2; $1->print();}
+lines : expr EOL  {$$ = $1; }
+    | lines expr EOL  {$$ = $2; }
     | lines EOL
     ;
 
 
 
 
-expr : expr ADD expr   {$$ = new binopNode((constantNode*)$1,"+",(constantNode*)$3); $$ = $$->toString(); }
-    | expr SUB expr    {$$ = new binopNode((constantNode*)$1,"-",(constantNode*)$3); $$ = $$->toString();}
-    | expr MUL expr    {$$ = new binopNode((constantNode*)$1,"*",(constantNode*)$3); $$ = $$->toString();}
-    | expr DIV expr    {$$ = new binopNode((constantNode*)$1,"/",(constantNode*)$3); $$ = $$->toString();}
-    | expr AND expr    {$$ = new binopNode((constantNode*)$1,"&&",(constantNode*)$3); $$ = $$->toString();}
-    | expr OR expr     {$$ = new binopNode((constantNode*)$1,"||",(constantNode*)$3); $$ = $$->toString();}
+expr : expr ADD expr    {$$ = new binopNode((constantNode*)$1,"+",(constantNode*)$3);}
+    | expr SUB expr    {$$ = new binopNode((constantNode*)$1,"-",(constantNode*)$3);}
+    | expr MUL expr    {$$ = new binopNode((constantNode*)$1,"*",(constantNode*)$3);}
+    | expr DIV expr    {$$ = new binopNode((constantNode*)$1,"/",(constantNode*)$3);}
+    | expr AND expr    {$$ = new binopNode((constantNode*)$1,"&&",(constantNode*)$3);}
+    | expr OR expr     {$$ = new binopNode((constantNode*)$1,"||",(constantNode*)$3);}
     | NOT expr         {$$ = NULL; }
-    | OP expr CP       {$$ = $2; }
+    | OP expr CP       {$$ = NULL; }
     | SUB expr  %prec UNIMUS       {$$ = NULL; } 
     | NUMBER {$$ = $1; }
     ;
