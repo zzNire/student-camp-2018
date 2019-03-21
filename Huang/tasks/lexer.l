@@ -4,6 +4,7 @@
 %{
     #include <iostream>
     #include "node.h"
+    #include "table.h"
     #include "parser.tab.h"
     using namespace std;
 
@@ -38,6 +39,11 @@ float {digit}+(\.{digit}+)?([eE][+-]?{digit}+)?
 "(" {return OP;}
 ")" {return CP;}
 "=" {return EQU;}
+";" {return ';';}
+"," {return ',';}
+double      { return DOUBLE; } 
+long        { return LONG; }
+
 {integer} {
     yylval.num = stoll(yytext,0,0);
     return INTEGER;}
@@ -47,6 +53,7 @@ float {digit}+(\.{digit}+)?([eE][+-]?{digit}+)?
 }    
 {id} {
     
+     yylval.str = new string(yytext);
      return ID;
 }
 [ \t] {}

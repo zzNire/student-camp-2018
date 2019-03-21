@@ -58,8 +58,10 @@ extern int yydebug;
     EQU = 268,
     INTEGER = 269,
     FLOAT = 270,
-    ID = 271,
-    UNIMUS = 272
+    DOUBLE = 271,
+    LONG = 272,
+    ID = 273,
+    UNIMUS = 274
   };
 #endif
 
@@ -68,13 +70,15 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 12 "parser.y" /* yacc.c:1909  */
+#line 18 "parser.y" /* yacc.c:1909  */
  
     long num;
     double doubleNum;
+    std::string *str;
     Node * node;
+    std::list<Node*> *list;
 
-#line 78 "parser.tab.h" /* yacc.c:1909  */
+#line 82 "parser.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -82,9 +86,23 @@ typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_DECLARED 1
 #endif
 
+/* Location type.  */
+#if ! defined YYLTYPE && ! defined YYLTYPE_IS_DECLARED
+typedef struct YYLTYPE YYLTYPE;
+struct YYLTYPE
+{
+  int first_line;
+  int first_column;
+  int last_line;
+  int last_column;
+};
+# define YYLTYPE_IS_DECLARED 1
+# define YYLTYPE_IS_TRIVIAL 1
+#endif
+
 
 extern YYSTYPE yylval;
-
+extern YYLTYPE yylloc;
 int yyparse (void);
 
 #endif /* !YY_YY_PARSER_TAB_H_INCLUDED  */

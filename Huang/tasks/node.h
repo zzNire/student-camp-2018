@@ -3,13 +3,22 @@
 
 #include <stdio.h>
 #include <string>
+#include <iostream>
+#include <list>
+#include <algorithm>
 #include "NodeType.h"
+
 using namespace std;
+
+
+
+
 class constantNode;
 class Node 
 {
     public:
         NodeType type;
+        
     Node()
     {
        
@@ -21,8 +30,6 @@ class Node
     virtual void print() = 0;
     virtual constantNode* toString() = 0;
 };
-
-
 class constantNode : public Node{
     public:
         string valueType;
@@ -51,6 +58,106 @@ class constantNode : public Node{
                 printf("%lf\n",dval);
             }
         }
+};
+
+class idNode : public Node
+{
+  public:
+    string name;
+    string valType;
+    list<Node *> arg_list;
+    Node *init;
+    int level;
+    int version;
+    int isArray;  //是否为数组, 主要用于 int a[] 这种 arg_list 为空的场景
+    int isStream; //是否为 Stream 复杂类型.后续待处理
+    int isParam;  //是否为function 或 composite 的输入参数
+    idNode(string name) : name(name), isArray(0), isStream(0), isParam(0)
+    {
+        this->type = Id;
+       // this->level = Level;
+        //this->version = current_version[Level];
+        //this->valType = "int";
+       
+    }
+    idNode(string *name)
+    {
+        new (this) idNode(*name);
+    }
+    ~idNode() {}
+    void print() {}
+    constantNode* toString(){
+        return dynamic_cast<constantNode*>(init);
+        
+    }
+};
+
+class primNode : public Node
+{
+  public:
+    string name;
+    bool isConst;
+    primNode(string str) : name(str), isConst(false)
+    {
+        this->type = primary;
+       
+    }
+    ~primNode() {}
+    void print() { cout << "primNodeType :" << name << endl; }
+    constantNode* toString(){
+        return 0;
+    }
+};
+
+
+
+class declareNode : public Node
+{
+  public:
+    primNode *prim;
+    list<idNode *> id_list;
+    declareNode(primNode *prim, idNode *id)
+    {
+        
+        this->type = Decl;
+        this->prim = prim;
+        if (id)
+            this->id_list.push_back(id);
+    }
+    ~declareNode() {}
+    void print() {}
+    constantNode* toString() {
+        printf("%s",prim->name.data());
+        list<idNode *>::iterator  var_iterator;
+        for(var_iterator = id_list.begin();var_iterator!=id_list.end();var_iterator++){
+            idNode* right_node =  *var_iterator;
+            printf("%s",right_node->name.data());
+            constantNode* value = dynamic_cast<constantNode*>(right_node->init);
+            if(value->valueType.compare("INTEGER")==0 ){
+                printf("%ld",value->llval);
+            }
+            else{
+                printf("lf",value->dval);
+            }
+        }
+        printf("\n");
+        return 0;
+    }
+};
+
+class funcBodyNode : public Node
+{
+  public:
+    list<Node *> *stmt_list;
+    funcBodyNode(list<Node *> *stmt_list)
+    {
+        this->stmt_list = stmt_list;
+    }
+    ~funcBodyNode() {}
+    void print() {}
+    constantNode* toString() {
+        return 0;
+    }
 };
 
 class binopNode : public Node
@@ -95,8 +202,10 @@ class binopNode : public Node
             if(this->op.compare("||")==0){
                 result = left->llval || right->llval;
             }
+            
+         
             return new constantNode("INTEGER",result);
-        
+                
         }
         else if(left->valueType.compare("FLOAT") == 0 || right->valueType.compare("FLOAT") == 0){
             double result = 0 ;
@@ -169,5 +278,6 @@ class unaryNode : public Node
         }
     }
 };
+
 
 #endif
