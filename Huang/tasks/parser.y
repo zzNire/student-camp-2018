@@ -7,7 +7,7 @@
 
 
 extern list<Node*> *Program; 
-
+SymbolTable sym_table;
 extern int yylex();
 extern void yyerror(const char *msg);
 
@@ -58,13 +58,14 @@ prog.start: translation.unit {printf("start\n") ;};
 
 translation.unit:
             external.definition EOL {
-                                    printf(" external.definition\n");
+                                    //printf(" external.definition\n");
                                     
                                      $$ = new list<Node*>({$1});
                                   }
         | translation.unit external.definition EOL {
                                                       $$->push_back($2);
-                                                       printf(" translation.unit external.definition\n");
+                                                       //printf(" translation.unit external.definition\n");
+                                                     
                                                 }
         ;
 
@@ -72,11 +73,11 @@ translation.unit:
 
 external.definition:
             declaration         {
-                                    printf(" declaration\n");
+                                   // printf(" declaration\n");
                                     $$ = $1;
                                 }
             | statement.list    {
-                                    printf(" statement.list\n");
+                                   // printf(" statement.list\n");
                                     $$ = new funcBodyNode({$1});
                                     //$$ = $1;
                                 }
@@ -88,19 +89,22 @@ statement.list:
         ;
 
 statement:
-        expr ';' { $$ = $1; }
+        expr ';' { 
+            //printf("expr");
+            $$ = $1; 
+            (static_cast<constantNode*>$1)->print();}
 
 
 declaration:
       declaring.list ';'        {
-                                    printf(" declaring.list\n");
+                                    //printf(" declaring.list\n");
                                     $$ = $1 ;
                                 }
 
     ;
 declaring.list:
           type.specifier      idNode       initializer.opt  {
-            printf(" type.specifier      idNode       initializer.opt \n");
+            //printf(" type.specifier      idNode       initializer.opt \n");
             (static_cast<idNode*>$2)->init = $3;
            // if(S[*($2)]==NULL) S.InsertSymbol(id);
             $$ = new declareNode((primNode*)$1,(static_cast<idNode*>$2)) ;
@@ -119,7 +123,7 @@ initializer.opt:
                                     $$ = NULL ;
                                 }
         | EQU initializer       {
-                                    printf("= initializer\n");
+                                    //printf("= initializer\n");
                                     $$ = $2 ;
                                 }
         ;
@@ -143,26 +147,22 @@ expr: expr ADD expr   {$$ = new binopNode((constantNode*)$1,"+",(constantNode*)$
     | OP expr CP       {$$ = $2; }
     | SUB expr  %prec UNIMUS       {$$ = $$ = new unaryNode("-",(constantNode*)$2); $$ = $$->toString(); } 
     | NUMBER    {$$ = $1; }
-    | idNode    {$$ = $1; $$ = $$->toString();}
+    | idNode    {$$ = $1; $$ = (static_cast<idNode*>$1)->init;}
     | idNode EQU expr {
-                        idNode* id = static_cast<idNode*>($1);
-                        bool result = sym_table.LookupSymbol(id->name);
-                        if(result == true){
-                        //id->init = $3;
-                        }else{
-                            //printf("%s is not defined",id->name.data());
-                        }
+                        (static_cast<idNode*>$1)->init = $3;
+                        
         }
     ;
 
-NUMBER:  INTEGER {$$ = new constantNode("INTEGER",$1);printf("%ld\n",$1);}
+NUMBER:  INTEGER {$$ = new constantNode("INTEGER",$1);//printf("%ld\n",$1);
+}
     | FLOAT {$$ = new constantNode("FLOAT",$1);}
     ;
 
 
 type.specifier:
           basic.type.name       { 
-              printf("basic.type.name ");
+              //printf("basic.type.name ");
               $$ = $1 ;}
         ;
 
@@ -170,7 +170,7 @@ type.specifier:
 basic.type.name:
          
           LONG        { 
-                        printf("long\n");
+                        //printf("long\n");
                         $$ = new primNode("long");
               }
         | DOUBLE       { $$ = new primNode("double");}
@@ -178,16 +178,20 @@ basic.type.name:
 
 idNode:
           ID  { 
-                    printf("%s\n",$1->data());
+                    //printf("%s\n",$1->data());
                     idNode* id = new idNode($1);
                     $$ = id;
-                    sym_table.InsertSymbol(id);
+                    if(!sym_table.put(id->name,id))
+                    {
+                        $$ = sym_table.get(id->name);
+                    }
             }
         ;     
 %%
 void yyerror ( const char * msg) {
     printf("%s\n",msg);
 }
+
 
 int main(void)
 {

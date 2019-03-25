@@ -22,7 +22,7 @@
 letter [A-Za-z]
 id ([a-zA-Z_][0-9a-zA-Z_]*)
 digit [0-9]
-integer [1-9][0-9]*
+integer ([1-9][0-9]*)|([0=9])
 float {digit}+(\.{digit}+)?([eE][+-]?{digit}+)?
 
 %option noyywrap

@@ -254,7 +254,7 @@ class unaryNode : public Node
             printf("%s %ld\n",op.data(), exp->llval);
             long result = 0 ;
             if(this->op.compare("!")==0){
-                result = ! exp->llval;
+                result = ! (exp->llval);
             }
             if(this->op.compare("-")==0){
                 result = - exp->llval;
@@ -266,7 +266,7 @@ class unaryNode : public Node
             double result = 0 ;
             printf("%s %lf\n ",op.data(), exp->dval);
              if(this->op.compare("!")==0){
-                result = ! exp->dval;
+                result = !(exp->dval);
             }
             if(this->op.compare("-")==0){
                 result = - exp->dval;
